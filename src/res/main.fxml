@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.layout.VBox?>
+<?import java.net.URL?>
+<?import javafx.scene.control.MenuBar?>
+
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.SeparatorMenuItem?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.text.Text?>
+<?import javafx.scene.input.KeyCharacterCombination?>
+<VBox xmlns="http://javafx.com/javafx"
+  xmlns:fx="http://javafx.com/fxml"
+  fx:controller="edu.cnm.deepdive.craps.controller.Controller">
+
+  <stylesheets>
+    <URL value ="@styles.css"/>
+  </stylesheets>
+
+  <MenuBar>
+    <Menu text="%menu_title">
+      <MenuItem
+        fx:id="next"
+        text="%next_title"
+        onAction="#next">
+        <accelerator>
+          <KeyCharacterCombination
+          alt="UP"
+          shift="ANY"
+          control="DOWN"
+          meta="UP"
+          shortcut="UP"
+          character="%next_character"/>
+        </accelerator>
+      </MenuItem>
+
+      <MenuItem
+        fx:id="fast"
+        text="%fast_title"
+        onAction="#fast">
+        <accelerator>
+          <KeyCharacterCombination
+            alt="UP"
+            shift="ANY"
+            control="DOWN"
+            meta="UP"
+            shortcut="UP"
+            character="%fast_character"/>
+        </accelerator>
+      </MenuItem>
+
+      <MenuItem
+        fx:id="pause"
+        text="%pause_title"
+        onAction="#pause">
+        <accelerator>
+          <KeyCharacterCombination
+            alt="UP"
+            shift="ANY"
+            control="DOWN"
+            meta="UP"
+            shortcut="UP"
+            character="%pause_character"/>
+        </accelerator>
+      </MenuItem>
+
+      <SeparatorMenuItem/>
+      <MenuItem
+        fx:id="reset"
+        text="%reset_title"
+        onAction="#reset">
+        <accelerator>
+          <KeyCharacterCombination
+            alt="UP"
+            shift="ANY"
+            control="DOWN"
+            meta="UP"
+            shortcut="DOWN"
+            character="%reset_character"/>
+        </accelerator>
+      </MenuItem>
+    </Menu>
+  </MenuBar>
+
+  <VBox
+    fx:id="content">
+
+    <ListView
+      fx:id="rolls"/>
+
+    <Text
+      fx:id="tally"
+      text="%tally_format"
+    wrappingWidth="240"/>
+
+
+  </VBox>
+
+</VBox>
