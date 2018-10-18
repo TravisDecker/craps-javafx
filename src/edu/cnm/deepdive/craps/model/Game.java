@@ -7,6 +7,7 @@ import java.util.Random;
 
 public class Game {
 
+  private static final String FORMAT_STRING = "%s %s%n";
   private final Object lock = new Object();
 
   private State state;
@@ -99,7 +100,7 @@ public class Game {
 
     @Override
     public String toString() {
-      return String.format("%s %s%n", Arrays.toString(dice), state);
+      return String.format(FORMAT_STRING, Arrays.toString(dice), state);
     }
 
   }

@@ -10,14 +10,15 @@ import java.util.ResourceBundle;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.ListCell;
 import javafx.scene.control.ListView;
 import javafx.scene.control.MenuItem;
 import javafx.scene.text.Text;
-import javafx.util.Callback;
 
 public class Controller {
 
+  public static final String WIN = "win";
+  public static final String LOSS = "loss";
+  public static final String PLACEHOLDER_STYLE_CLASS = "";
   private Game game;
   private boolean running;
   private String tallyFormat;
@@ -40,7 +41,7 @@ public class Controller {
   private void initialize() {
     tallyFormat = tally.getText();
     rolls.setCellFactory(lv -> new RollCell(resources));
-    rolls.getStyleClass().add("");
+    rolls.getStyleClass().add(PLACEHOLDER_STYLE_CLASS);
     reset(null);
     updateMenu();
 
@@ -94,13 +95,13 @@ public class Controller {
     if (!diceRolls.isEmpty()) {
       State state = diceRolls.get(diceRolls.size() - 1).getState();
       if (state == State.WIN) {
-        styleClasses.add("win");
+        styleClasses.add(WIN);
       } else {
-        styleClasses.add("loss");
+        styleClasses.add(LOSS);
       }
       rolls.getItems().addAll(diceRolls);
     } else {
-      styleClasses.add("");
+      styleClasses.add(PLACEHOLDER_STYLE_CLASS);
     }
   }
 

@@ -1,5 +1,7 @@
 package edu.cnm.deepdive.craps.view;
 
+import static edu.cnm.deepdive.craps.Main.RESOURCE_PATH;
+
 import edu.cnm.deepdive.craps.model.Game.Roll;
 import java.io.IOException;
 import java.util.ResourceBundle;
@@ -13,6 +15,7 @@ import javafx.scene.text.Text;
 
 public class RollCell extends ListCell<Roll> {
 
+  private static final String RES_ROLL_FXML = RESOURCE_PATH + "roll.fxml";
   private ResourceBundle bundle;
 
   public RollCell(ResourceBundle bundle) {
@@ -28,7 +31,7 @@ public class RollCell extends ListCell<Roll> {
     } else {
       try {
         ClassLoader classLoader = getClass().getClassLoader();
-        FXMLLoader fxmlLoader = new FXMLLoader(classLoader.getResource("res/roll.fxml"), bundle);
+        FXMLLoader fxmlLoader = new FXMLLoader(classLoader.getResource(RES_ROLL_FXML), bundle);
         Controller controller = new Controller();
         fxmlLoader.setController(controller);
         Parent root = fxmlLoader.load();
@@ -42,7 +45,7 @@ public class RollCell extends ListCell<Roll> {
 
   private static class Controller {
 
-    private static final String DIE_FACE_FORMAT = "res/face_%d.png";
+    private static final String DIE_FACE_FORMAT = RESOURCE_PATH + "face_%d.png";
     private static Image[] faces;
         static {
           ClassLoader loader = Controller.class.getClassLoader();

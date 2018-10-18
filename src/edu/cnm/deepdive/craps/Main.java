@@ -7,9 +7,17 @@ import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.image.Image;
 import javafx.stage.Stage;
 
 public class Main extends Application {
+
+  public static final String RESOURCE_PATH = "res/";
+
+  private static final String RES_UI =RESOURCE_PATH + "ui";
+  private static final String RES_MAIN_FXML = RESOURCE_PATH + "main.fxml";
+  private static final String WINDOW_TITLE = "window_title";
+  private static final String ICON_PATH = RESOURCE_PATH + "icon.png";
 
   private ClassLoader classLoader;
   private ResourceBundle bundle;
@@ -34,8 +42,8 @@ public class Main extends Application {
 
   private void setupLoaders() {
     classLoader = getClass().getClassLoader();
-    bundle = ResourceBundle.getBundle("res/ui");
-    fxmlLoader = new FXMLLoader(classLoader.getResource("res/main.fxml"), bundle);
+    bundle = ResourceBundle.getBundle(RES_UI);
+    fxmlLoader = new FXMLLoader(classLoader.getResource(RES_MAIN_FXML), bundle);
   }
 
   private Parent loadLayout() throws IOException {
@@ -46,8 +54,8 @@ public class Main extends Application {
 
   private void setupStage(Stage stage, Parent root) {
     Scene scene = new Scene(root);
-    stage.setTitle(bundle.getString("window_title"));
-    // TODO Set icon, etc.
+    stage.setTitle(bundle.getString(WINDOW_TITLE));
+    stage.getIcons().add(new Image(classLoader.getResourceAsStream(ICON_PATH)));
     stage.setResizable(false);
     stage.setScene(scene);
     stage.show();
