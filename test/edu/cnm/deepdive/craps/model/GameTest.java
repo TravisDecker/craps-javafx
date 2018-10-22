@@ -32,6 +32,8 @@ class GameTest {
       }
     }
   }
-  // TODO fallow this patter to test all possable states
+
+
+
 
 }
