@@ -12,6 +12,9 @@ import javafx.stage.Stage;
 
 public class Main extends Application {
 
+  /**
+   * saves the resource directory for repeated use.
+   */
   public static final String RESOURCE_PATH = "res/";
 
   private static final String RES_UI =RESOURCE_PATH + "ui";

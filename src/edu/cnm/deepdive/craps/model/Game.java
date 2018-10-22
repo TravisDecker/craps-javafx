@@ -17,6 +17,10 @@ public class Game {
   private int wins;
   private int losses;
 
+  /**
+   * initalizes the win/loss tallies and the roll list.
+   * @param rng
+   */
   public Game(Random rng) {
     this.rng = rng;
     rolls = new LinkedList<>();
@@ -24,6 +28,9 @@ public class Game {
     losses = 0;
   }
 
+  /**
+   * Resets the game by setting the state to come out and pint to 0.
+   */
   public void reset() {
     state = State.COME_OUT;
     point = 0;
@@ -32,6 +39,10 @@ public class Game {
     }
   }
 
+  /**
+   * Generates the dice roll.
+   * @return
+   */
   private State roll() {
     int[] dice = {
         1 + rng.nextInt(6),
@@ -49,6 +60,10 @@ public class Game {
     return state;
   }
 
+  /**
+   * Sets The tallies for a new game .
+   * @return
+   */
   public State play() {
     reset();
     while (state != State.WIN && state != State.LOSS) {
@@ -62,24 +77,43 @@ public class Game {
     return state;
   }
 
+  /**
+   * returns game state.
+   * @return
+   */
   public State getState() {
     return state;
   }
 
+  /**
+   * Returns the rolls list and sync locks it to prevent a read write collision.
+   * @return
+   */
   public List<Roll> getRolls() {
     synchronized (lock) {
       return new LinkedList<>(rolls);
     }
   }
 
+  /**
+   * returns the tally of wins.
+   * @return
+   */
   public int getWins() {
     return wins;
   }
 
+  /**
+   * returnd the tally of losses.
+   * @return
+   */
   public int getLosses() {
     return losses;
   }
 
+  /**
+   * class defines each state of the craps game.
+   */
   public static class Roll {
 
     private final int[] dice;

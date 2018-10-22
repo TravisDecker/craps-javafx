@@ -13,6 +13,9 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.text.Text;
 
+/**
+ * defines the operation of the roll display.
+ */
 public class RollCell extends ListCell<Roll> {
 
   private static final String RES_ROLL_FXML = RESOURCE_PATH + "roll.fxml";
@@ -22,6 +25,11 @@ public class RollCell extends ListCell<Roll> {
     this.bundle = bundle;
   }
 
+  /**
+   *
+   * @param item
+   * @param empty
+   */
   @Override
   protected void updateItem(Roll item, boolean empty) {
     super.updateItem(item, empty);
@@ -47,20 +55,23 @@ public class RollCell extends ListCell<Roll> {
 
     private static final String DIE_FACE_FORMAT = RESOURCE_PATH + "face_%d.png";
     private static Image[] faces;
-        static {
-          ClassLoader loader = Controller.class.getClassLoader();
-          faces = new Image[6];
-          for (int i = 0; i < faces.length; i++) {
-            faces[i] = new Image(loader.getResourceAsStream(String.format(DIE_FACE_FORMAT, i+1)));
-          }
-        }
+
+    static {
+      ClassLoader loader = Controller.class.getClassLoader();
+      faces = new Image[6];
+      for (int i = 0; i < faces.length; i++) {
+        faces[i] = new Image(loader.getResourceAsStream(String.format(DIE_FACE_FORMAT, i + 1)));
+      }
+    }
+
     private String totalFormat;
-     @FXML
+    @FXML
     private ImageView die0;
     @FXML
     private ImageView die1;
     @FXML
     private Text total;
+
     @FXML
     private void initialize() {
 
