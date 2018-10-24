@@ -26,9 +26,9 @@ public class RollCell extends ListCell<Roll> {
   }
 
   /**
-   *
+   *  Loads the resources for the roll item.
    * @param item
-   * @param empty
+   * @param
    */
   @Override
   protected void updateItem(Roll item, boolean empty) {
